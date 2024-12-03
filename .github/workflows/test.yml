@@ -20,3 +20,23 @@ jobs:
 
       - name: Run tests
         run: npm test # Runs the test suite.
+    
+  deploy:
+    runs-on: ubuntu-latest # Specifies the runner environment.
+    steps:
+      - name: Get code
+        uses: actions/checkout@v2 # Checks out the repository code.
+
+      - name: Install NodeJS
+        uses: actions/setup-node@v2 # Sets up the Node.js environment.
+        with:
+          node-version: 18 # Specifies the Node.js version.
+        
+      - name: Install dependencies
+        run: npm ci # Installs dependencies using npm.
+        
+      - name: Build production
+        run: npm run build # Builds the production version of the application.
+
+      - name: Deploy
+        run: echo "deploying..." 
