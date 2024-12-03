@@ -22,6 +22,7 @@ jobs:
         run: npm test # Runs the test suite.
     
   deploy:
+    needs: test
     runs-on: ubuntu-latest # Specifies the runner environment.
     steps:
       - name: Get code
